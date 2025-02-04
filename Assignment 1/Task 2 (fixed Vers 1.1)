@@ -36,7 +36,7 @@ const line = new THREE.Line( geometry, material );
 
 scene.add( line );
 
-enderer.render( scene, camera );
+renderer.render( scene, camera );
 
 function animate() {
   renderer.render(scene, camera)
