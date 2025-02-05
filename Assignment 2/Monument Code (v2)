@@ -1,0 +1,54 @@
+import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js"
+
+// import Orbit controls
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+const camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 1, 800 );
+camera.position.set( 0, 0, 7 );
+camera.lookAt( 0, 0, 0 );
+
+
+const scene = new THREE.Scene();
+
+const geometry = new THREE.BufferGeometry();
+
+// create a simple square shape. We duplicate the top left and bottom right
+// vertices because each vertex needs to appear once per triangle.
+const vertices = new Float32Array( [
+	-1.0, -1.0,  1.0, // v0
+	 1.0, -1.0,  1.0, // v1
+	 1.0,  1.0,  1.0, // v2
+
+	 1.0,  1.0,  1.0, // v3
+	-1.0,  1.0,  1.0, // v4
+	-1.0, -1.0,  1.0  // v5
+] );
+
+// itemSize = 3 because there are 3 values (components) per vertex
+geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+const material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+const mesh = new THREE.Mesh( geometry, material );
+
+// ADD TO SCENE
+renderer.render( scene, camera );
+
+function animate() {
+  renderer.render(scene, camera)
+  scene.add(mesh)
+
+   requestAnimationFrame(animate);
+  }
+  
+
+
+
+
+
+var controls = new OrbitControls (camera, renderer.domElement);
+
+
+animate();
