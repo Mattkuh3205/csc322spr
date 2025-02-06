@@ -28,23 +28,26 @@ const geometry5 = new THREE.BufferGeometry();
 
 // create a simple square shape. We duplicate the top left and bottom right
 // vertices because each vertex needs to appear once per triangle.
+//yellow
 const vertices = new Float32Array( [
-	-1.0, 0,  1.0, // v0
-	 1.0, 0,  1.0, // v1
-	 1.0,  500,  1.0, // v2
+	-27.5, 0,  27.5, // v0
+	 27.5, 0,  27.5, // v1
+	 27.5,  500,  27.5, // v2
 
-	 1.0,  500,  1.0, // v3
-	-1.0,  500,  1.0, // v4
-	-1.0, 0,  1.0  // v5
+	27.5,  500,  27.5, // v3
+	-27.5,  500,  27.5, // v4
+	-27.5, 0,  27.5  // v5
 ] );
 
 // itemSize = 3 because there are 3 values (components) per vertex
 geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
 const material = new THREE.MeshBasicMaterial( { color: 0xfff000 } );
 const mesh1 = new THREE.Mesh( geometry, material );
+material.side = THREE.DoubleSide;
 
 //-----------------------------------------------
 
+/*
 const vertices2 = new Float32Array( [
 	-1.0, 0,  1.0, // v0
 	 1.0, 0,  1.0, // v1
@@ -54,47 +57,66 @@ const vertices2 = new Float32Array( [
 	-1.0,  500,  1.0, // v4
 	-1.0, 0 ,  1.0  // v5
 ] );
+*/
+
+//red
+const vertices2 = new Float32Array( [
+27.5, 0,  -27.5, // v0
+	 27.5, 0,  27.5, // v1
+	 27.5,  500,  27.5, // v2
+
+	27.5,  500,  27.5, // v3
+	27.5,  500,  -27.5, // v4
+	27.5, 0,  -27.5  // v5
+] );
 
 // itemSize = 3 because there are 3 values (components) per vertex
 geometry2.setAttribute( 'position', new THREE.BufferAttribute( vertices2, 3 ) );
 const material2 = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
 const mesh2 = new THREE.Mesh( geometry2, material2 );
+material2.side = THREE.DoubleSide;
+
 
 //--------------------------------------------------------
 
+//white
 const vertices3 = new Float32Array( [
-	-1.0, 0,  1.0, // v0
-	 1.0, 0,  1.0, // v1
-	 1.0,  500,  1.0, // v2
+27.5, 0,  27.5, // v0
+	 27.5, 0,  27.5, // v1
+	 27.5,  500, 27.5, // v2
 
-	 1.0,  500,  1.0, // v3
-	-1.0,  500,  1.0, // v4
-	-1.0,  0,  1.0  // v5
+	-27.5,  500,  27.5, // v3
+	27.5,  500,  -27.5, // v4
+	27.5, 0,  -27.5  // v5
 ] );
 
-// itemSize = 3 because there are 3 values (components) per vertex
+
+
 geometry3.setAttribute( 'position', new THREE.BufferAttribute( vertices3, 3 ) );
 const material3 = new THREE.MeshBasicMaterial( { color: 0xfffff0 } );
 const mesh3 = new THREE.Mesh( geometry3, material3 );
+material3.side = THREE.DoubleSide;
+
+
 
 //---------------------------------------------------------------
 
+//blue
 const vertices4 = new Float32Array( [
-	-1.0,  0,  1.0, // v0
-	 1.0, 0,  1.0, // v1
-	 1.0,  500,  1.0, // v2
+   27.5, 0,  -27.5, // v0
+	 27.5, 0,  27.5, // v1
+	 27.5,  500,  27.5, // v2
 
-	 1.0,  500,  1.0, // v3
-	-1.0,  500,  1.0, // v4
-	-1.0, 0,  1.0  // v5
+	27.5,  500,  27.5, // v3
+	27.5,  500,  -27.5, // v4
+	27.5, 0,  -27.5  // v5
 ] );
 
-//------------------------------------------------------------------
-// itemSize = 3 because there are 3 values (components) per vertex
 
 geometry4.setAttribute( 'position', new THREE.BufferAttribute( vertices4, 3 ) );
 const material4 = new THREE.MeshBasicMaterial( { color: 0x00f0f0 } );
 const mesh4 = new THREE.Mesh( geometry4, material4 );
+material4.side = THREE.DoubleSide;
 
 //---------------------------------------------------------------
 
@@ -115,14 +137,18 @@ function animate() {
   scene.add(mesh3);
   scene.add(mesh4);
 
+	mesh1.position.set(2,0,0);
+  mesh2.position.set(2,0,0);
+  mesh3.position.set(0,0,0);
+  mesh4.position.set(0,0,0);
 
-  mesh3.position.set(0.115,0,-1.95);
-  mesh2.position.set(0.07,0,-0.035);
-  mesh4.position.set(-1.9,0,-0.035);
+ 
 
+//mesh4.rotation.y += .05;
+//mesh3.rotation.y += .05;
+//mesh2.rotation.y += .05; //red
+//mesh1.rotation.y += .05; //rellow
 
-  mesh2.rotation.y = 1.5;
-  mesh4.rotation.y = 1.5
 
   }
   renderer.setAnimationLoop(animate);
@@ -134,3 +160,8 @@ var controls = new OrbitControls (camera, renderer.domElement);
 
 
 animate();
+
+
+
+
+ 
