@@ -13,6 +13,8 @@ camera.lookAt(0, 0, 0 );
 
 
 const scene = new THREE.Scene();
+//scene.background = new THREE.Color( "rgb(200, 150, 200)"); //for fun
+
 
 const geometry = new THREE.BufferGeometry();
 const geometry2 = new THREE.BufferGeometry();
@@ -23,6 +25,8 @@ const geometry5 = new THREE.BufferGeometry();
 const geometry6 = new THREE.BufferGeometry();
 const geometry7 = new THREE.BufferGeometry();
 const geometry8 = new THREE.BufferGeometry();
+
+
 
 
 
@@ -44,6 +48,7 @@ const vertices = new Float32Array( [
 	-17.5,  500,  17.5, // v4
 	-27.5, 0,  27.5  // v5
 ] );
+
 
 // itemSize = 3 because there are 3 values (components) per vertex
 geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
@@ -181,13 +186,6 @@ const material8 = new THREE.MeshBasicMaterial( { color: 0xFF00FF} );
 const triangle4 = new THREE.Mesh( geometry8, material8 );
 material8.side = THREE.DoubleSide
 
-
-
-
-
-
-
-// ADD TO SCENE
 renderer.render( scene, camera );
 
 function animate() {
@@ -206,6 +204,7 @@ function animate() {
   triangle2.position.set(2,500,0);
   triangle3.position.set(2,500,0);
   triangle4.position.set(2, 500, 0);
+  
 
   //mesh3.rotation.y = 1.5;
 
