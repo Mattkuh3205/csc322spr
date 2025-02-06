@@ -52,7 +52,8 @@ const vertices = new Float32Array( [
 
 // itemSize = 3 because there are 3 values (components) per vertex
 geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
-const material = new THREE.MeshBasicMaterial( { color: 0xfff000 } );
+const color1 = new THREE.Color("rgb(10, 255, 100)"); //three.color, color used: teal green
+const material = new THREE.MeshBasicMaterial({color: color1});
 const mesh1 = new THREE.Mesh( geometry, material );
 material.side = THREE.DoubleSide
 
@@ -72,7 +73,7 @@ const vertices2 = new Float32Array( [
 
 // itemSize = 3 because there are 3 values (components) per vertex
 geometry2.setAttribute( 'position', new THREE.BufferAttribute( vertices2, 3 ) );
-const material2 = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+const material2 = new THREE.MeshBasicMaterial( { color: 0xf0f000 } ); //hex notation used, color: yellow
 const mesh2 = new THREE.Mesh( geometry2, material2 );
 material2.side = THREE.DoubleSide
 
@@ -93,7 +94,7 @@ const vertices3 = new Float32Array( [
 
 
 geometry3.setAttribute( 'position', new THREE.BufferAttribute( vertices3, 3 ) );
-const material3 = new THREE.MeshBasicMaterial( { color: "blue" } );
+const material3 = new THREE.MeshBasicMaterial( { color: "blue" } ); // color keywords, color used: blue
 const mesh3 = new THREE.Mesh( geometry3, material3 );
 material3.side = THREE.DoubleSide
 
@@ -101,7 +102,7 @@ material3.side = THREE.DoubleSide
 
 //---------------------------------------------------------------
 
-//blue
+//purple
 const vertices4 = new Float32Array( [
 
  -27.5, 0,  -27.5, // v0
@@ -118,7 +119,7 @@ const vertices4 = new Float32Array( [
 
 
 geometry4.setAttribute( 'position', new THREE.BufferAttribute( vertices4, 3 ) );
-const material4 = new THREE.MeshBasicMaterial( { color: 'rgb(100,150,200)' } );
+const material4 = new THREE.MeshBasicMaterial( { color: 'rgb(200,250,200)' } ); //rgb color format used:, color used, light teal green
 const mesh4 = new THREE.Mesh( geometry4, material4 );
 material4.side = THREE.DoubleSide
 
@@ -136,7 +137,7 @@ const vertices5 = new Float32Array( [
 
 
 geometry5.setAttribute( 'position', new THREE.BufferAttribute( vertices5, 3 ) );
-const material5 = new THREE.MeshBasicMaterial( { color: 0x0fff00} );
+const material5 = new THREE.MeshBasicMaterial( { color: 0x00ffff} );
 const triangle1 = new THREE.Mesh( geometry5, material5 );
 material5.side = THREE.DoubleSide
 
@@ -153,7 +154,7 @@ const vertices6 = new Float32Array( [
 
 
 geometry6.setAttribute( 'position', new THREE.BufferAttribute( vertices6, 3 ) );
-const material6 = new THREE.MeshBasicMaterial( { color: 'rgb(0,0,230)'} );
+const material6 = new THREE.MeshBasicMaterial( { color: 'rgb(50,200,145)'} );
 const triangle2 = new THREE.Mesh( geometry6, material6);
 material6.side = THREE.DoubleSide
 
@@ -167,7 +168,7 @@ const vertices7 = new Float32Array( [
 
 
 geometry7.setAttribute( 'position', new THREE.BufferAttribute( vertices7, 3 ) );
-const material7 = new THREE.MeshBasicMaterial( { color: 0xFFFFFF} );
+const material7 = new THREE.MeshBasicMaterial( { color: 0xFF00FF} );
 const triangle3 = new THREE.Mesh( geometry7, material7);
 material7.side = THREE.DoubleSide
 
@@ -182,7 +183,7 @@ const vertices8 = new Float32Array( [
 
 
 geometry8.setAttribute( 'position', new THREE.BufferAttribute( vertices8, 3 ) );
-const material8 = new THREE.MeshBasicMaterial( { color: 0xFF00FF} );
+const material8 = new THREE.MeshBasicMaterial( { color: 0xF0000F} );
 const triangle4 = new THREE.Mesh( geometry8, material8 );
 material8.side = THREE.DoubleSide
 
