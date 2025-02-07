@@ -1,0 +1,226 @@
+import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js"
+
+// import Orbit controls
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+const camera = new THREE.PerspectiveCamera( 135, window.innerWidth / window.innerHeight, 1, 800 );
+camera.position.set( 0, 0, 7 );
+camera.lookAt(0, 0, 0 );
+
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color( "rgb(200, 150, 200)"); //for fun
+
+
+const geometry = new THREE.BufferGeometry();
+const geometry2 = new THREE.BufferGeometry();
+const geometry3 = new THREE.BufferGeometry();
+const geometry4 = new THREE.BufferGeometry();
+
+const geometry5 = new THREE.BufferGeometry();
+const geometry6 = new THREE.BufferGeometry();
+const geometry7 = new THREE.BufferGeometry();
+const geometry8 = new THREE.BufferGeometry();
+
+
+// y - all -1 should be 0, all 1 should be 500
+//x - all -1 should be -27 and all 1 should be 27
+// z- all 1 should be 27 and all -1 should be -27
+
+//teal
+const vertices = new Float32Array( [
+	-27.5, 0,  27.5, 
+	 27.5, 0,  27.5, 
+	 17.5,  500,  17.5, 
+
+	17.5,  500,  17.5, 
+	-17.5,  500,  17.5, 
+	-27.5, 0,  27.5  
+] );
+
+
+geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+const color1 = new THREE.Color("rgb(10, 255, 100)"); //three.color, color used: mint green
+const material = new THREE.MeshBasicMaterial({color: color1});
+const mesh1 = new THREE.Mesh( geometry, material );
+
+//-----------------------------------------------
+
+
+//yellow
+const vertices2 = new Float32Array( [
+27.5, 0,  -27.5, 
+	 27.5, 0,  27.5, 
+	 17.5,  500,  17.5, 
+
+	17.5,  500,  17.5, 
+	17.5,  500,  -17.5, 
+	27.5, 0,  -27.5  
+] );
+
+// itemSize = 3 because there are 3 values (components) per vertex
+geometry2.setAttribute( 'position', new THREE.BufferAttribute( vertices2, 3 ) );
+const material2 = new THREE.MeshBasicMaterial( { color: 0xf0f000 } ); //hex notation used, color: yellow
+const mesh2 = new THREE.Mesh( geometry2, material2 );
+
+
+//--------------------------------------------------------
+
+//blue
+const vertices3 = new Float32Array( [
+-27.5, 0,  -27.5,
+	 27.5, 0,  -27.5, 
+	 17.5,  500, -17.5, 
+
+	17.5,  500,  -17.5, 
+	-17.5,  500,  -17.5, 
+	-27.5, 0,  -27.5  
+] );
+
+
+
+geometry3.setAttribute( 'position', new THREE.BufferAttribute( vertices3, 3 ) );
+const material3 = new THREE.MeshBasicMaterial( { color: "blue" } ); // color keywords, color used: blue
+const mesh3 = new THREE.Mesh( geometry3, material3 );
+
+
+
+//---------------------------------------------------------------
+
+//light teal green
+const vertices4 = new Float32Array( [
+
+ -27.5, 0,  -27.5, 
+	 -27.5, 0,  27.5, 
+	 -17.5,  500,  17.5, 
+   
+-17.5,  500,  17.5, 
+	-17.5,  500,  -17.5, 
+	-27.5, 0,  -27.5  
+
+ 
+
+] );
+
+
+geometry4.setAttribute( 'position', new THREE.BufferAttribute( vertices4, 3 ) );
+const material4 = new THREE.MeshBasicMaterial( { color: 'rgb(200,250,200)' } ); //rgb color format used:, color used, light teal green
+const mesh4 = new THREE.Mesh( geometry4, material4 );
+
+
+//---------------------------------------------------------------
+
+
+//TRIANGLE
+const vertices5 = new Float32Array( [
+ -17.5, 0,  17.5, 
+	 17.5, 0,  17.5, 
+	 0,  55,  0, 
+   0,  1, 0, 
+] );
+
+
+geometry5.setAttribute( 'position', new THREE.BufferAttribute( vertices5, 3 ) );
+const material5 = new THREE.MeshBasicMaterial( { color: 0x00ffff} ); //neon blue
+const triangle1 = new THREE.Mesh( geometry5, material5 );
+
+
+
+//--------------------------------------------------------------------
+
+const vertices6 = new Float32Array( [
+ 17.5, 0,  -17.5, 
+	 17.5, 0,  17.5, 
+	 0,  55,  0, 
+   0,  1, 0, 
+] );
+
+
+geometry6.setAttribute( 'position', new THREE.BufferAttribute( vertices6, 3 ) );
+const material6 = new THREE.MeshBasicMaterial( { color: 'rgb(50,200,195)'} ); //rgb color format
+const triangle2 = new THREE.Mesh( geometry6, material6); //color used" teal grey
+
+
+const vertices7 = new Float32Array( [
+ -17.5, 0,  -17.5, 
+	 -17.5, 0,  17.5,
+	 0,  55,  0, 
+   0,  1, 0, 
+] );
+
+
+geometry7.setAttribute( 'position', new THREE.BufferAttribute( vertices7, 3 ) );
+const material7 = new THREE.MeshBasicMaterial( { color: 0xFFBF00} ); //color: orange
+const triangle3 = new THREE.Mesh( geometry7, material7);
+
+//--------------------------------------------------------------------
+
+const vertices8 = new Float32Array( [
+ -17.5, 0,  -17.5, 
+	 17.5, 0,  -17.5, 
+	 0,  55,  0, 
+   0,  1, 0, 
+] );
+
+
+geometry8.setAttribute( 'position', new THREE.BufferAttribute( vertices8, 3 ) );
+const material8 = new THREE.MeshBasicMaterial( { color: 0xFF10F0} ); //hex code, color: pink
+const triangle4 = new THREE.Mesh( geometry8, material8 );
+
+renderer.render( scene, camera );
+
+function animate() {
+  renderer.render(scene, camera)
+  scene.add(mesh1);
+  scene.add(mesh2);
+  scene.add(mesh3); 
+  scene.add(mesh4); 
+  
+  
+  mesh1.position.set(2,0,0); 
+  mesh2.position.set(2,0,0); 
+  mesh3.position.set(2,0,0);
+  mesh4.position.set(2,0,0);
+  triangle1.position.set(2,500,0);
+  triangle2.position.set(2,500,0);
+  triangle3.position.set(2,500,0);
+  triangle4.position.set(2, 500, 0);
+  
+
+
+  mesh4.rotation.y += .05; 
+  mesh3.rotation.y += .05; 
+  mesh2.rotation.y += .05; 
+  mesh1.rotation.y += .05; 
+
+  
+  //triangle
+  scene.add(triangle1);
+  scene.add(triangle2);
+  scene.add(triangle3);
+  scene.add(triangle4);
+  triangle1.rotation.y += 0.05;
+  triangle2.rotation.y += 0.05;
+  triangle3.rotation.y += 0.05;
+  triangle4.rotation.y += 0.05;
+
+	 requestAnimationFrame(animate);
+
+  }
+ 
+ /*
+NOTES: I was able to get everything to spin without using the material.side feature, but I was unable to get it spin without using material.side = THREE.DoubleSide, as that is
+how I was able to get everything spin in unison. It is now aligned with the assignment, so the sides disappear when you look under it
+I am including both versions just to make sure
+ */
+
+
+
+var controls = new OrbitControls (camera, renderer.domElement);
+
+
+animate();
