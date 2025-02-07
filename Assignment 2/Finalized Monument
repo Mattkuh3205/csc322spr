@@ -62,7 +62,7 @@ const vertices2 = new Float32Array( [
 	27.5, 0,  -27.5  
 ] );
 
-// itemSize = 3 because there are 3 values (components) per vertex
+
 geometry2.setAttribute( 'position', new THREE.BufferAttribute( vertices2, 3 ) );
 const material2 = new THREE.MeshBasicMaterial( { color: 0xf0f000 } ); //hex notation used, color: yellow
 const mesh2 = new THREE.Mesh( geometry2, material2 );
