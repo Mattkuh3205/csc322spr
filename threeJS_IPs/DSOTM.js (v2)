@@ -5,6 +5,12 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
+/*notes: still trying to figure out how to get cube geometry to both be rotated on the z axis, and also change the x position
+still working on how to figure this out
+
+the lines and pyramid ARE spinning in unison, so half way there
+*/
+
 const camera = new THREE.PerspectiveCamera(
   125,
   window.innerWidth / window.innerHeight,
