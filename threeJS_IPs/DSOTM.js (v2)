@@ -11,35 +11,61 @@ const camera = new THREE.PerspectiveCamera(
   .1,
   900,
 )
-camera.position.set(500, 500, 100)
-camera.lookAt(0, 10, 50)
+camera.position.set(100, 100, 50)
+camera.lookAt(0, 10, 10)
 
 const scene = new THREE.Scene()
 scene.background = new THREE.Color( "rgb(200, 179, 104)"); //for fun
+
+//---------------------------------------------------------------
 
 const geometry5 = new THREE.BufferGeometry()
 const geometry6 = new THREE.BufferGeometry()
 const geometry7 = new THREE.BufferGeometry()
 const geometry8 = new THREE.BufferGeometry()
+//---------------------------------------------------------------
+
+//lines
+const material = new THREE.LineBasicMaterial( { color: 0xFFFFFF } );
+const points = [];
+points.push( new THREE.Vector3( 17.5, 0, -17.5 ) );
+points.push( new THREE.Vector3( 0, 55, 0 ) );
+points.push( new THREE.Vector3( 17.5, 0, 17.5 ) );
+points.push( new THREE.Vector4( -17.5, 0, 17.5 ) );
+
+points.push( new THREE.Vector3( -17.5, 0, 17.5 ) );
+points.push( new THREE.Vector3( 0, 55, 0 ) );
+points.push( new THREE.Vector3( 17.5, 0, 17.5 ) );
+points.push( new THREE.Vector4( 17.5, 0, -17.5 ) );
+
+points.push( new THREE.Vector3(-17.5, 0, -17.5 ) );
+points.push( new THREE.Vector3( 0, 55, 0 ) );
+points.push( new THREE.Vector3( 17.5, 0, 17.5 ) );
+points.push( new THREE.Vector4( 17.5, 0, -17.5 ) );
+
+points.push( new THREE.Vector3( 17.5, 0, 17.5 ) );
+points.push( new THREE.Vector3( 0, 55, 0 ) );
+points.push( new THREE.Vector3( -17.5, 0, -17.5 ) );
+points.push( new THREE.Vector4( -17.5, 0, 17.5 ) );
+
+const geometry = new THREE.BufferGeometry().setFromPoints( points );
+const line = new THREE.Line( geometry, material );
+scene.add( line );
+
+//-----------------------------------------------------------------
+
+
 
 //TRIANGLE
 const vertices5 = new Float32Array([
-  -17.5,
-  0,
-  17.5, // v0
-  17.5,
-  0,
-  17.5, // v1
-  0,
-  55,
-  0, // v2
-  0,
-  1,
-  0, // v2
+  -17.5,0, 17.5, // v0
+  17.5,0,17.5, // v1
+  0,55,0, // v2
+  0,1,0,
 ])
 
 geometry5.setAttribute("position", new THREE.BufferAttribute(vertices5, 3))
-const material5 = new THREE.MeshBasicMaterial({ color: 0x0fff00 })
+const material5 = new THREE.MeshBasicMaterial({ color: "rgb(0, 0, 0)" })
 const triangle1 = new THREE.Mesh(geometry5, material5)
 material5.side = THREE.DoubleSide
 
@@ -61,7 +87,7 @@ const vertices6 = new Float32Array([
 ])
 
 geometry6.setAttribute("position", new THREE.BufferAttribute(vertices6, 3))
-const material6 = new THREE.MeshBasicMaterial({ color: "rgb(0,0,230)" })
+const material6 = new THREE.MeshBasicMaterial({ color: "rgb(0, 0, 0)" })
 const triangle2 = new THREE.Mesh(geometry6, material6)
 material6.side = THREE.DoubleSide
 
@@ -81,7 +107,7 @@ const vertices7 = new Float32Array([
 ])
 
 geometry7.setAttribute("position", new THREE.BufferAttribute(vertices7, 3))
-const material7 = new THREE.MeshBasicMaterial({ color: 0xffffff })
+const material7 = new THREE.MeshBasicMaterial({ color: "rgb(0, 0, 0)" })
 const triangle3 = new THREE.Mesh(geometry7, material7)
 material7.side = THREE.DoubleSide
 
@@ -103,11 +129,15 @@ const vertices8 = new Float32Array([
 ])
 
 geometry8.setAttribute("position", new THREE.BufferAttribute(vertices8, 3))
-const material8 = new THREE.MeshBasicMaterial({ color: 0xff00ff })
+const material8 = new THREE.MeshStandardMaterial({ color:"rgb(0, 0, 0)" })
 const triangle4 = new THREE.Mesh(geometry8, material8)
 material8.side = THREE.DoubleSide
 
+//--------------------------------------------------------------------
 
+
+
+  
 renderer.render(scene, camera)
 
 function animate() {
@@ -117,10 +147,20 @@ renderer.render(scene, camera)
   scene.add(triangle2)
   scene.add(triangle3)
   scene.add(triangle4)
+  
+
+  /* scene.add(cube1)
+  scene.add(cube2)
+  scene.add(cube3)
+  scene.add(cube4)
+  scene.add(cube5) */
+
+ 
   triangle1.rotation.y += 0.05
   triangle2.rotation.y += 0.05
   triangle3.rotation.y += 0.05
   triangle4.rotation.y += 0.05
+  line.rotation.y += 0.05   
 
   requestAnimationFrame(animate)
 }
